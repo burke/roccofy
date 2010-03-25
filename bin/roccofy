@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'sinatra'
+
+SRC_PATH = ARGV[0] || "."
+
+get '*' do
+  path = "#{SRC_PATH}#{params[:splat]}"
+  if File.exist?(path) and path =~ /\.rb$/
+    cmd = "rocco #{path}"
+    puts cmd
+    system cmd
+    p = path.sub(/\.rb$/,'.html')
+    x=File.read(p)
+    File.unlink(p)
+    x
+  else
+    "incorrect path."
+  end
+end
