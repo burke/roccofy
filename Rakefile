@@ -12,6 +12,7 @@ begin
     gem.authors = ["Burke Libbey"]
     gem.files.include '{bin,spec,lib}/**/*'
     gem.add_dependency "sinatra"
+    gem.add_dependency "rocco"
     gem.executables = ["roccofy"]
   end
 rescue LoadError

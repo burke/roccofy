@@ -1,0 +1,10 @@
+== Installation
+
+    sudo port install py-pygments
+    gem install roccofy
+
+== Usage
+
+    roccofy /Users/name/src/project
+    open http://localhost:4567/lib/project.rb
+    
