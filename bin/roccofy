@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'rocco'
 
 SRC_PATH = ARGV[0] || "."
 
@@ -9,13 +10,7 @@ class Roccofy < Sinatra::Application
   get '*' do
     path = "#{SRC_PATH}#{params[:splat]}"
     if File.exist?(path) and path =~ /\.rb$/
-      cmd = "rocco #{path}"
-      puts cmd
-      system cmd
-      p = path.sub(/\.rb$/,'.html')
-      x=File.read(p)
-      File.unlink(p)
-      x
+      Rocco.new(path).to_html
     else
       "incorrect path."
     end
